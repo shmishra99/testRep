@@ -1,10 +1,17 @@
-on: pull_request_target
+
+on:
+  issues:
+    types:
+      - reopened
+      - opened
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
 
 jobs:
-  welcome: 
-    permissions:
-      contents: read
-      pull-requests: write
+  welcome:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@v6
@@ -19,12 +26,10 @@ jobs:
               state: 'all'
             })
             const issues = await github.paginate(opts)
-
             await github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `**Welcome**, new contributor!
-
+              body: `${JSON.stringify(issues)} **Welcome**, new contributor!
                 Please make sure you're read our [contributing guide](CONTRIBUTING.md) and we look forward to reviewing your Pull request shortly ✨`
             })
