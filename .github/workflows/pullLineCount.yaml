@@ -43,11 +43,14 @@ jobs:
                       .link(
                         base_url +  'entry.85265664=' +
                         'No' + '&entry.2137816233=' + issue)
-                  const issueComment = context.issue({
-                    body: 'Are you satisfied with the resolution of your issue?' + '\n' + yesCsat + '\n' + noCsat + '\n'
-                  });
-                  console.log("issue is resolved",issueComment)
-                  return context.octokit.issues.createComment(issueComment)
+                  const bd = 'Are you satisfied with the resolution of your issue?' + '\n' + yesCsat + '\n' + noCsat + '\n'
+
+                   await github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body:  bd
+                 })
                 }
               }
                console.log("my issue")
