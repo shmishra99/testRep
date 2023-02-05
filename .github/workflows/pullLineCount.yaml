@@ -1,9 +1,9 @@
-
 on:
   issues:
     types:
       - reopened
       - opened
+      - closed
 
 permissions:
   contents: read
@@ -17,19 +17,36 @@ jobs:
       - uses: actions/github-script@v6
         with:
           script: |
-            // Get a list of all issues created by the PR opener
-            // See: https://octokit.github.io/rest.js/#pagination
-            const creator = context.payload.sender.login
-            const opts = github.rest.issues.listForRepo.endpoint.merge({
-              ...context.issue,
-              creator,
-              state: 'all'
-            })
-            const issues = await github.paginate(opts)
-            await github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: `${JSON.stringify(issues)} **Welcome**, new contributor!
-                Please make sure you're read our [contributing guide](CONTRIBUTING.md) and we look forward to reviewing your Pull request shortly ✨`
-            })
+            const issue = context.payload.issue.html_url
+            let base_url = ''
+            console.log('Github event: issue_closed for issue =', issue)
+            if (true) {
+              for (const label of context.payload.issue.labels) {
+                if (label.name.includes('type:bug') ||
+                  label.name.includes('type:build/install') ||
+                  label.name.includes('type:support') ||
+                  label.name.includes('type:others') ||
+                  label.name.includes('type:docs-bug') ||
+                  label.name.includes('type:performance')) {
+                  console.log(`label-${label.name}, posting CSAT survey for issue =${issue}`)
+                  if (context.payload.repository.name.includes('mediapipe'))
+                    base_url = constants.mediapipe_csat_base_url
+                  else
+                    base_url = constants.base_url
+                  const yesCsat =
+                    (constants.yes)
+                      .link(
+                      base_url + constants.satisfaction_param +
+                      constants.yes + constants.issueid_param + issue)
+                  const noCsat =
+                    (constants.no)
+                      .link(
+                        base_url + constants.satisfaction_param +
+                        constants.no + constants.issueid_param + issue)
+                  const issueComment = context.issue({
+                    body: constants.msg + '\n' + yesCsat + '\n' + noCsat + '\n'
+                  });
+                  return context.octokit.issues.createComment(issueComment)
+                }
+              }
+            }
