@@ -44,7 +44,7 @@ jobs:
                         base_url +  'entry.85265664=' +
                         'No' + '&entry.2137816233=' + issue)
                   const issueComment = context.issue({
-                    body: constants.msg + '\n' + yesCsat + '\n' + noCsat + '\n'
+                    body: 'Are you satisfied with the resolution of your issue?' + '\n' + yesCsat + '\n' + noCsat + '\n'
                   });
                   console.log("issue is resolved",issueComment)
                   return context.octokit.issues.createComment(issueComment)
