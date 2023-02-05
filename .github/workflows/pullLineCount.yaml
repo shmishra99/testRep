@@ -50,4 +50,5 @@ jobs:
                   return context.octokit.issues.createComment(issueComment)
                 }
               }
+               console.log("my issue")
             }
