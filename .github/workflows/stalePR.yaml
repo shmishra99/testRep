@@ -20,7 +20,7 @@ jobs:
           close-pr-message: "Closing as stale. Please reopen if you'd like to work on this further"
           days-before-issue-stale: 15
           days-before-issue-close: 15
-          days-before-pr-close: 0
+          days-before-pr-close: 1
           days-before-pr-stale: 0
           any-of-labels: 'awaiting response'
           stale-pr-label: 'Stalled'
