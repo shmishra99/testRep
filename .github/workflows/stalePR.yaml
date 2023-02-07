@@ -39,11 +39,11 @@ jobs:
           days-before-pr-stale: 0
          
           #Check for label to stale or close the issue/PR
-          any-of-labels: 'awaiting response'
+          any-of-labels: 'stat:awaiting response'
          
           #override stale to stalled for PR
           stale-pr-label: 'Stalled'
           
           #override stale to stalled for Issue
-          stale-issue-label: "stat:awaiting response"
+          stale-issue-label: "Stalled"
 
