@@ -45,5 +45,5 @@ jobs:
           stale-pr-label: 'Stalled'
           
           #override stale to stalled for Issue
-          stale-issue-label: "Stalled"
+          stale-issue-label: "stat:awaiting response"
 
