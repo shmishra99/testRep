@@ -1,7 +1,7 @@
 name: 'Close stale issues and PR'
 on:
   schedule:
-    - cron: '* * * */6 *'
+    - cron: '*/4 * * * *'
     
 permissions:
   contents: read
@@ -27,16 +27,16 @@ jobs:
           close-pr-message: "Closing as stale. Please reopen if you'd like to work on this further"
         
           # Number of days of inactivity before an Issue Request becomes stale
-          days-before-issue-stale: 1
+          days-before-issue-stale: 0
          
           # Number of days of inactivity before a stale Issue is closed
-          days-before-issue-close: 1
+          days-before-issue-close: 0
        
           # Number of days of inactivity before a stale PR is closed
-          days-before-pr-close: 0
+          days-before-pr-close: -1
        
           # Number of days of inactivity before an PR Request becomes stale
-          days-before-pr-stale: 0
+          days-before-pr-stale: -1
          
           #Check for label to stale or close the issue/PR
           any-of-labels: 'stat:awaiting response'
@@ -46,4 +46,3 @@ jobs:
           
           #override stale to stalled for Issue
           stale-issue-label: "Stalled"
-
