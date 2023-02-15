@@ -35,7 +35,7 @@ jobs:
           days-before-issue-stale: 0
          
           # close-as-complete: true 
-          state-reason: complete
+          state-reason: completed
          
           #Check for label to stale or close the issue/PR
           any-of-labels: 'stat:awaiting response'
