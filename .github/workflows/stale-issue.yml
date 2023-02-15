@@ -7,7 +7,7 @@
 name: 'Stale and Close issues'
 on:
   schedule:
-    - cron: '* * * */4 *'
+    - cron: '*/2 * * * *'
     
 permissions:
   contents: read
