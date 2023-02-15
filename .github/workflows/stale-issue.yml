@@ -6,8 +6,9 @@
 
 name: 'Stale and Close issues'
 on:
-  schedule:
-    - cron: '*/2 * * * *'
+  issue_comment:
+    types:
+      - created
     
 permissions:
   contents: read
