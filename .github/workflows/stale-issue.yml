@@ -23,7 +23,7 @@ jobs:
         with:
           
           # close-as-complete: true 
-          state-reason: completed
+          close-issue-reason: completed
          
          
           # comment on issues if not active for more then 14 days.
