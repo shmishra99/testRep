@@ -38,8 +38,8 @@ jobs:
           # Number of days of inactivity before an issue Request becomes stale
           days-before-issue-stale: 0
          
-     
-         
+          exempt-issue-labels: 'override stale'
+ 
           #Check for label to stale or close the issue/PR
           any-of-labels: 'stat:awaiting response'
          
