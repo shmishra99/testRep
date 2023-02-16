@@ -16,7 +16,7 @@ jobs:
       - uses: actions/github-script@v6
         with:
           script: |
-            const script = require('./scripts/CSAT.js')
+            const script = require('CSAT.js')
             script({github, context})
 
             
