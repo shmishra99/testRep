@@ -1,5 +1,5 @@
 
-module.export = async ({github,context}) => {
+module.exports = async ({github,context}) => {
 const issue = context.payload.issue.html_url
 let base_url = ''
 console.log('Github event: issue_closed for issue =', issue)
