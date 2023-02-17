@@ -6,35 +6,30 @@ module.exports = async ({github,context}) => {
 
     if (context.payload.issue.state !== 'closed' &&
       context.payload.issue.user.login == context.payload.sender.login) {
+      let labelRM = []
       for (const label of context.payload.issue.labels) {
-        if (label.name.includes("stalled")) {
-        //   const stalledLabel = context.issue({ name: ['stalled'] });
-          console.log("line 12")
-          github.rest.issues.setLabels({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            labels:["stalled"]
-            
-          })
-        }
-        if (label.name.includes("stat:awaiting response")) {
-        //   const awaitingLabel = context.issue({ name: ['stat:awaiting response'] });
+        if (label.name.includes("stale")) {
+          console.log("Adding label to remove List: stale")
+          labelRM.push("stale")
          
-          console.log("line 16")
-          let response = await github.rest.issues.setLabels({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            labels:["awaiting response"]
-            
-          })
-          console.log(response)
-
-        //   await context.octokit.issues.removeLabel(awaitingLabel);
         }
 
+        if (label.name.includes("stat:awaiting response")) {         
+          console.log("Adding label to remove List: stat:awaiting response")
+          labelRM.push("awaiting response")
+        }
+
+     
       }
+
+       await github.rest.issues.setLabels({
+        issue_number: context.issue.number,
+        owner: context.repo.owner,
+        repo: context.repo.repo,
+        labels:labelRM
+        
+      })
+
     }
 
 
