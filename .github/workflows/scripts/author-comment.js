@@ -9,10 +9,12 @@ module.exports = async ({github,context}) => {
       for (const label of context.payload.issue.labels) {
         if (label.name.includes("stalled")) {
           const stalledLabel = context.issue({ name: ['stalled'] });
+          console.log("line 12")
           await context.octokit.issues.removeLabel(stalledLabel);
         }
         if (label.name.includes("stat:awaiting response")) {
           const awaitingLabel = context.issue({ name: ['stat:awaiting response'] });
+          console.log("line 16")
           await context.octokit.issues.removeLabel(awaitingLabel);
         }
       }
