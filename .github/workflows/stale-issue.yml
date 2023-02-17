@@ -46,3 +46,9 @@ jobs:
          
           #override stale to stalled for issue
           stale-issue-label: 'Stalled'
+      - uses: actions/checkout@v3
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const script = require('./\.github/workflows/scripts/CSAT.js')
+            script({github, context})
