@@ -6,6 +6,7 @@
 
 name: 'Stale and Close issues'
 on:
+  workflow_dispatch:
   issue_comment:
     types:
       - created
@@ -20,6 +21,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/stale@v7
+        with:
+          
+          # close-as-complete: true 
+          close-issue-reason: completed
          
          
           # comment on issues if not active for more then 14 days.
@@ -40,9 +45,4 @@ jobs:
           any-of-labels: 'stat:awaiting response'
          
           #override stale to stalled for issue
-          stale-issue-label: 'Stale'
-      - uses: actions/github-script@v6
-        with:
-          script: |
-            const script = require('./\.github/workflows/scripts/issue-pr-closed.js')
-            script({github, context})
+          stale-issue-label: 'Stalled'
