@@ -26,7 +26,7 @@ module.exports = async ({github,context}) => {
             issue_number: context.issue.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
-            labels:["stat:awaiting response"]
+            labels:["awaiting response"]
             
           })
           console.log(response)
