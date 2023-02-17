@@ -8,15 +8,31 @@ module.exports = async ({github,context}) => {
       context.payload.issue.user.login == context.payload.sender.login) {
       for (const label of context.payload.issue.labels) {
         if (label.name.includes("stalled")) {
-          const stalledLabel = context.issue({ name: ['stalled'] });
+        //   const stalledLabel = context.issue({ name: ['stalled'] });
           console.log("line 12")
-          await context.octokit.issues.removeLabel(stalledLabel);
+          github.rest.issues.setLabels({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            labels:["stalled"]
+            
+          })
         }
         if (label.name.includes("stat:awaiting response")) {
-          const awaitingLabel = context.issue({ name: ['stat:awaiting response'] });
+        //   const awaitingLabel = context.issue({ name: ['stat:awaiting response'] });
+         
           console.log("line 16")
-          await context.octokit.issues.removeLabel(awaitingLabel);
+          github.rest.issues.setLabels({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            labels:["stat:awaiting response"]
+            
+          })
+
+        //   await context.octokit.issues.removeLabel(awaitingLabel);
         }
+
       }
     }
 
