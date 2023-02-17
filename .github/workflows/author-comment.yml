@@ -1,7 +1,7 @@
 on:
-  issues:
+  issue_comment:
     types:
-      - closed
+      - created
 
 permissions:
   contents: read
@@ -16,7 +16,7 @@ jobs:
       - uses: actions/github-script@v6
         with:
           script: |
-            const script = require('./\.github/workflows/scripts/CSAT.js')
+            const script = require('./\.github/workflows/scripts/author-comment.js')
             script({github, context})
 
             
