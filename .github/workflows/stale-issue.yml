@@ -7,9 +7,9 @@
 name: 'Stale and Close issues'
 on:
   workflow_dispatch:
-  issue_comment:
-    types:
-      - created
+ # issue_comment:
+ #   types:
+ #     - created
     
 permissions:
   contents: read
