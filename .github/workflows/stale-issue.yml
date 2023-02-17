@@ -40,7 +40,7 @@ jobs:
           days-before-issue-stale: 0
          
           exempt-issue-labels: 'override stale'
-          
+ 
           labels-to-remove-when-unstale: 'stale,stalled,stat:awaiting response'
 
           #Check for label to stale or close the issue/PR
@@ -48,6 +48,7 @@ jobs:
          
           #override stale to stalled for issue
           stale-issue-label: 'Stalled'
+      - uses: actions/checkout@v3
       - uses: actions/github-script@v6
         with:
           script: |
