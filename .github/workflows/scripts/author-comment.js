@@ -22,13 +22,14 @@ module.exports = async ({github,context}) => {
         //   const awaitingLabel = context.issue({ name: ['stat:awaiting response'] });
          
           console.log("line 16")
-          github.rest.issues.setLabels({
+          let response = await github.rest.issues.setLabels({
             issue_number: context.issue.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
             labels:["stat:awaiting response"]
             
           })
+          console.log(response)
 
         //   await context.octokit.issues.removeLabel(awaitingLabel);
         }
