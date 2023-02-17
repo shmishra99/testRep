@@ -6,7 +6,6 @@
 
 name: 'Stale and Close issues'
 on:
-  workflow_dispatch:
   issue_comment:
     types:
       - created
@@ -21,7 +20,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/stale@v7
-        with:  workflow_dispatch
          
          
           # comment on issues if not active for more then 14 days.
