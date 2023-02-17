@@ -8,29 +8,32 @@ module.exports = async ({github,context}) => {
       context.payload.issue.user.login == context.payload.sender.login) {
       let labelRM = []
       for (const label of context.payload.issue.labels) {
+      
         if (label.name.includes("stale")) {
-          console.log("Adding label to remove List: stale")
-          labelRM.push("stale")
+          console.log("Removing label: stale")
+          await github.rest.issues.removeLabel({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            name:"stale"
+        
+          })
          
         }
 
         if (label.name.includes("stat:awaiting response")) {         
-          console.log("Adding label to remove List: stat:awaiting response")
-          labelRM.push("awaiting response")
-        }
-
-     
-      }
-       console.log("Labels to remove :" , labelRM)
-       
-       if(labelRM.length)
-          await github.rest.issues.setLabels({
+          console.log("Removing label : stat:awaiting response")
+          await github.rest.issues.removeLabel({
             issue_number: context.issue.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
-            labels:labelRM
+            name:"stat:awaiting response"
         
           })
+        }
+
+     
+      }       
 
     }
 
