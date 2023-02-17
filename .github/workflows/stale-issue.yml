@@ -6,6 +6,7 @@
 
 name: 'Stale and Close issues'
 on:
+  workflow_dispatch:
   issue_comment:
     types:
       - created
