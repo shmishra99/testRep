@@ -22,13 +22,15 @@ module.exports = async ({github,context}) => {
      
       }
        console.log("Labels to remove :" , labelRM)
-       await github.rest.issues.setLabels({
-        issue_number: context.issue.number,
-        owner: context.repo.owner,
-        repo: context.repo.repo,
-        labels:labelRM
+       
+       if(labelRM.length)
+          await github.rest.issues.setLabels({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            labels:labelRM
         
-      })
+          })
 
     }
 
