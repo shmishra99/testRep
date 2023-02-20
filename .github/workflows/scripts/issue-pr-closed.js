@@ -12,9 +12,19 @@ module.exports = async ({github,context}) => {
 
     })
 
+    for(let i=0;i<issuess.length;i++){
+         
+        //obj call for stale label remove 
+        let staleRM = 
+
+        await rmLabel()
+            
+
+    }
+
     
 
-    console.log("line 3",issuess.data )
+    console.log("line 3",JSON.stringify(issuess.data.labels) )
 
 
 
@@ -31,7 +41,5 @@ async function rmLabel(queryObj){
         name: "stale"
 
     })
-
-  
 
 }
