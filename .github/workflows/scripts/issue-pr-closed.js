@@ -1,8 +1,8 @@
 module.exports = async ({github,context}) => {  
 
-    console.log('entered unmark for issueid = ', context.payload.issue.number);
-    console.log('issue author is ', context.payload.issue.user.login);
-    console.log('issue latest commenter is ', context.payload.sender.login);
+    // console.log('entered unmark for issueid = ', context.payload.issue.number);
+    // console.log('issue author is ', context.payload.issue.user.login);
+    // console.log('issue latest commenter is ', context.payload.sender.login);
     
     let issuess = await github.rest.issues.listForRepo({
          owner: context.repo.owner,
