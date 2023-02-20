@@ -1,5 +1,7 @@
-module.exports = async ({github,context}) => {  
 
+
+module.exports = async ({github,context}) => {  
+    
     // console.log('entered unmark for issueid = ', context.payload.issue.number);
     // console.log('issue author is ', context.payload.issue.user.login);
     // console.log('issue latest commenter is ', context.payload.sender.login);
@@ -8,7 +10,7 @@ module.exports = async ({github,context}) => {
          owner: context.repo.owner,
          repo: context.repo.repo,
          state:'closed',
-         labels:'stalled'
+         labels:'stale'
 
     })
   
@@ -25,7 +27,7 @@ module.exports = async ({github,context}) => {
        queryObj["repo"] = context.repo.repo;
        
        //call to remove stale
-       queryObj["name"] = 'stalled'
+       queryObj["name"] = 'stale'
        console.log("line 30",queryObj)
        await rmLabel(queryObj,github)
       
