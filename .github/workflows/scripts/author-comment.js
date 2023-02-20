@@ -1,5 +1,10 @@
 const CONSTENT_VALUES = require('./constant')
 
+/* 
+When author of the issue/pr comment than
+stat:awaiting response and stale label will be
+removed.
+*/
 module.exports = async ({ github, context }) => {
     console.log('entered unmark for issueid = ', context.payload.issue.number);
     console.log('issue author is ', context.payload.issue.user.login);
