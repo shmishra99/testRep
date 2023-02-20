@@ -27,13 +27,13 @@ module.exports = async ({github,context}) => {
        //call to remove stale
        queryObj["name"] = 'stalled'
        console.log("line 30",queryObj)
-       await rmLabel(queryObj)
+       await rmLabel(queryObj,github)
       
        //call to remove a stat:awaiting response
 
        queryObj["name"] = "stat:awaiting response"
        console.log("line 30",queryObj)
-       await rmLabel(queryObj)
+       await rmLabel(queryObj,github)
 
     }
 
@@ -42,7 +42,7 @@ module.exports = async ({github,context}) => {
 
 }
 
-async function rmLabel(queryObj){
+async function rmLabel(queryObj,github){
   
     await github.rest.issues.removeLabel(queryObj)
 
