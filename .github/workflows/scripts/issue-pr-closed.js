@@ -8,7 +8,7 @@ module.exports = async ({github,context}) => {
          labels:'stalled'
 
     })
-    console.log("line 3",issuess.data.length )
+    console.log("line 3",issuess.data )
     console.log("issue trigger")
 
 }
