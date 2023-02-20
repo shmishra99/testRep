@@ -37,5 +37,5 @@ jobs:
           #Check for label to stale or close the issue/PR
           any-of-labels: 'stat:awaiting response'
          
-          #override stale to stalled for PR
-          stale-pr-label: 'Stalled'
+          #override stale to stale for PR
+          stale-pr-label: 'stale'
