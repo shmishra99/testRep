@@ -12,15 +12,15 @@ module.exports = async ({github,context}) => {
 
     })
 
-    for(let i=0;i<issuess.length;i++){
+    // for(let i=0;i<issuess.length;i++){
          
-        //obj call for stale label remove 
-        let staleRM = 
+    //     // //obj call for stale label remove 
+    //     // let staleRM = 
 
-        await rmLabel()
+    //     // await rmLabel()
             
 
-    }
+    // }
 
     
 
