@@ -24,7 +24,7 @@ module.exports = async ({github,context}) => {
 
     
 
-    console.log("line 3",JSON.stringify(issuess.data.labels) )
+    console.log("line 3",JSON.stringify(issuess.data[0].labels) )
 
 
 
