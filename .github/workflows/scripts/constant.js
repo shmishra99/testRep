@@ -1,23 +1,16 @@
 let CONSTENT_VALUES = {
-   
-      GLOBALS : {
-          
-        LABELS:{
-        STALE:"stale",
-        AWAITINGRES: "stat:awaiting response",
+    GLOBALS: {
+        LABELS: {
+            STALE: "stale",
+            AWAITINGRES: "stat:awaiting response",
         },
-        STATE:{
-            CLOSED:"closed"
+        STATE: {
+            CLOSED: "closed"
         }
+    },
+        MODULE: {
 
-      },
-      MODULE:{
-
-
-      }
-      
-
-
+    }
 }
 
-module.export = CONSTENT_VALUES
+module.exports = CONSTENT_VALUES

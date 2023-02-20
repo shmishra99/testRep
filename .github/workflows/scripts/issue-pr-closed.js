@@ -1,22 +1,16 @@
 
+const CONSTENT_VALUES = require('./constant')
 
 module.exports = async ({github,context}) => {  
-    
-    // console.log('entered unmark for issueid = ', context.payload.issue.number);
-    // console.log('issue author is ', context.payload.issue.user.login);
-    // console.log('issue latest commenter is ', context.payload.sender.login);
     
     let issuessList = await github.rest.issues.listForRepo({
          owner: context.repo.owner,
          repo: context.repo.repo,
-         state:'closed',
-         labels:'stale'
-
-    })
+         state:CONSTENT_VALUES.GLOBALS.STATE.CLOSED,
+         labels:CONSTENT_VALUES.GLOBALS.LABELS.STALE
+        })
   
     let issues = issuessList.data;
-    
-    
     for(let i=0;i<issues.length;i++){
          
        let issue = issues[i]
@@ -27,21 +21,14 @@ module.exports = async ({github,context}) => {
        queryObj["repo"] = context.repo.repo;
        
        //call to remove stale
-       queryObj["name"] = 'stale'
-       console.log("line 30",queryObj)
+       queryObj["name"] = CONSTENT_VALUES.GLOBALS.LABELS.STALE
+  
        await rmLabel(queryObj,github)
-      
-       //call to remove a stat:awaiting response
-
-       queryObj["name"] = "stat:awaiting response"
-       console.log("line 30",queryObj)
+       queryObj["name"] = CONSTENT_VALUES.GLOBALS.LABELS.AWAITINGRES
+ 
        await rmLabel(queryObj,github)
 
     }
-
-
-    console.log("issue trigger")
-
 }
 
 async function rmLabel(queryObj,github){
