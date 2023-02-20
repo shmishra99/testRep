@@ -43,7 +43,12 @@ module.exports = async ({github,context}) => {
 }
 
 async function rmLabel(queryObj,github){
-  
+    
+    try{
     await github.rest.issues.removeLabel(queryObj)
+    }
+    catch(e){
+        console.log(`Issue Number ${queryObj.number} Doesn't  have ${queryObj.name} label`)
+    }
 
 }
