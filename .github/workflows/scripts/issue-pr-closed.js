@@ -4,7 +4,8 @@ module.exports = async ({github,context}) => {
           
         owner: context.repo.owner,
         repo: context.repo.repo,
-         state:'closed'
+         state:'closed',
+         labels:'stalled,awating:response'
 
     })
     console.log("line 3",issuess )
