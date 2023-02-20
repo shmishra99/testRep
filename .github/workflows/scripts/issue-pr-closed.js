@@ -5,10 +5,10 @@ module.exports = async ({github,context}) => {
         owner: context.repo.owner,
         repo: context.repo.repo,
          state:'closed',
-         labels:'stalled,awating:response'
+         labels:'stalled'
 
     })
-    console.log("line 3",issuess )
+    console.log("line 3",issuess.data.length )
     console.log("issue trigger")
 
 }
