@@ -1,44 +1,56 @@
 
-module.exports = async ({github,context}) => {
-const issue = context.payload.issue.html_url
-let base_url = ''
-console.log('Github event: issue_closed for issue =', issue)
-if (true) {
-  console.log("inside if condi")
-  for (const label of context.payload.issue.labels) {
-     console.log("inside for loop")
-    if (label.name.includes('type:bug') ||
-      label.name.includes('type:build/install') ||
-      label.name.includes('type:support') ||
-      label.name.includes('type:others') ||
-      label.name.includes('type:docs-bug') ||
-      label.name.includes('type:performance') || true) {
-      console.log(`label-${label.name}, posting CSAT survey for issue =${issue}`)
-      if (context.payload.repository.name.includes('mediapipe'))
-        base_url = 'https://docs.google.com/forms/d/e/1FAIpQLScOLT8zeBHummIZFnfr9wqvxYzWD1DAypyvNia5WVIWtFANYg/viewform?'
-      else
-        base_url = 'https://docs.google.com/forms/d/e/1FAIpQLSfaP12TRhd9xSxjXZjcZFNXPGk4kc1-qMdv3gc6bEP90vY1ew/viewform?'
-      const yesCsat =
-        ('Yes')
-          .link(
-          base_url + 'entry.85265664=' +
-          'Yes' + '&entry.2137816233=' + issue)
-      const noCsat =
-        ('No')
-          .link(
-            base_url +  'entry.85265664=' +
-            'No' + '&entry.2137816233=' + issue)
-      const bd = 'Are you satisfied with the resolution of your issue?' + '\n' + yesCsat + '\n' + noCsat + '\n'
+const CONSTENT_VALUES = require('./constant')
 
-       await github.rest.issues.createComment({
-    issue_number: context.issue.number,
-    owner: context.repo.owner,
-    repo: context.repo.repo,
-    body:  bd
-     })
+module.exports = async ({ github, context }) => {
+    const issue = context.payload.issue.html_url
+    let base_url = ''
+    console.log('Github event: issue_closed for issue =', issue)
+    if (checkForCsatRepo(context)) {
+        console.log("inside if condi")
+        for (const label of context.payload.issue.labels) {
+            console.log("inside for loop")
+            if (label.name.includes(CONSTENT_VALUES.GLOBALS.LABELS.BUG) ||
+                label.name.includes(CONSTENT_VALUES.GLOBALS.LABELS.BUG_INSTALL) ||
+                label.name.includes(CONSTENT_VALUES.GLOBALS.LABELS.TYPE_PERFORMANCE) ||
+                label.name.includes(CONSTENT_VALUES.GLOBALS.LABELS.TYPE_OTHER) ||
+                label.name.includes(CONSTENT_VALUES.GLOBALS.LABELS.TYPE_SUPPORT) ||
+                label.name.includes(CONSTENT_VALUES.GLOBALS.LABELS.TYPE_DOCS_BUG)) {
+                console.log(`label-${label.name}, posting CSAT survey for issue =${issue}`)
+               
+                if (context.payload.repository.name.includes('mediapipe'))
+                    base_url = CONSTENT_VALUES.MODULE.CSAT.MEDIA_PIPE_BASE_URL;
+                else
+                    base_url = CONSTENT_VALUES.MODULE.CSAT.BASE_URL;
+                const yesCsat =
+                    ('Yes')
+                        .link(
+                            base_url + CONSTENT_VALUES.MODULE.CSAT.SATISFACTION_PARAM +
+                            'Yes' + CONSTENT_VALUES.MODULE.CSAT.ISSUEID_PRAM + issue)
+                const noCsat =
+                    ('No')
+                        .link(
+                            base_url + CONSTENT_VALUES.MODULE.CSAT.SATISFACTION_PARAM +
+                            'No' + CONSTENT_VALUES.MODULE.CSAT.ISSUEID_PRAM + issue)
+                const comment = CONSTENT_VALUES.MODULE.CSAT.MSG + '\n' + yesCsat + '\n' + noCsat + '\n'
+
+                await github.rest.issues.createComment({
+                    issue_number: context.issue.number,
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    body: comment
+                })
+            }
+        }
     }
-  }
-   console.log("my issue")
-}
 
 }
+
+
+function checkForCsatRepo(context) {
+    let repos = CONSTENT_VALUES.MODULE.CSAT.CSAT_INCLUDES_REPO.split(',');
+    if (repos.includes(context.repo.repo)) {
+      console.log('repo is under CSAT list of repos');
+      return true;
+    }
+    return false;
+  }
