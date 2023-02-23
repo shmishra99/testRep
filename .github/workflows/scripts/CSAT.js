@@ -16,7 +16,7 @@ module.exports = async ({ github, context }) => {
                 label.name.includes(CONSTENT_VALUES.GLOBALS.LABELS.TYPE_DOCS_BUG)) {
                 console.log(`label-${label.name}, posting CSAT survey for issue =${issue}`)
                
-                if (context.payload.repository.name.includes('mediapipe'))
+                if (context.repo.repo.includes('mediapipe'))
                     base_url = CONSTENT_VALUES.MODULE.CSAT.MEDIA_PIPE_BASE_URL;
                 else
                     base_url = CONSTENT_VALUES.MODULE.CSAT.BASE_URL;
