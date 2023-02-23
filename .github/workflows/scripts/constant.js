@@ -17,6 +17,7 @@ let CONSTENT_VALUES = {
     MODULE: {
         CSAT: {
             YES:'Yes',
+            NO:'No',
             CSAT_INCLUDES_REPO:  'tensorflow,tfx,transform,hub,data-validation,model-analysis,' +
             'serving,tfjs,models,mediapipe,keras,TestGitRepository,testRep',
             BASE_URL: 'https://docs.google.com/forms/d/e/1FAIpQLScOLT8zeBHummIZFnfr9wqvxYzWD1DAypyvNia5WVIWtFANYg/viewform?',

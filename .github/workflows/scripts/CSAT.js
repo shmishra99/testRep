@@ -8,7 +8,6 @@ module.exports = async ({ github, context }) => {
     if (checkForCsatRepo(context)) {
         console.log("inside if condi")
         for (const label of context.payload.issue.labels) {
-            console.log("inside for loop")
             if (label.name.includes(CONSTENT_VALUES.GLOBALS.LABELS.BUG) ||
                 label.name.includes(CONSTENT_VALUES.GLOBALS.LABELS.BUG_INSTALL) ||
                 label.name.includes(CONSTENT_VALUES.GLOBALS.LABELS.TYPE_PERFORMANCE) ||
@@ -22,15 +21,15 @@ module.exports = async ({ github, context }) => {
                 else
                     base_url = CONSTENT_VALUES.MODULE.CSAT.BASE_URL;
                 const yesCsat =
-                    ('Yes')
+                    (CONSTENT_VALUES.MODULE.CSAT.YES)
                         .link(
                             base_url + CONSTENT_VALUES.MODULE.CSAT.SATISFACTION_PARAM +
-                            'Yes' + CONSTENT_VALUES.MODULE.CSAT.ISSUEID_PRAM + issue)
+                            CONSTENT_VALUES.MODULE.CSAT.YES + CONSTENT_VALUES.MODULE.CSAT.ISSUEID_PRAM + issue)
                 const noCsat =
-                    ('No')
+                    (CONSTENT_VALUES.MODULE.CSAT.NO)
                         .link(
                             base_url + CONSTENT_VALUES.MODULE.CSAT.SATISFACTION_PARAM +
-                            'No' + CONSTENT_VALUES.MODULE.CSAT.ISSUEID_PRAM + issue)
+                            CONSTENT_VALUES.MODULE.CSAT.NO + CONSTENT_VALUES.MODULE.CSAT.ISSUEID_PRAM + issue)
                 const comment = CONSTENT_VALUES.MODULE.CSAT.MSG + '\n' + yesCsat + '\n' + noCsat + '\n'
 
                 await github.rest.issues.createComment({
