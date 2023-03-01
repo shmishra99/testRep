@@ -16,5 +16,5 @@ jobs:
       - uses: actions/github-script@v6
         with:
           script: |
-            const script = require('./\.github/workflows/scripts/issue-closed.js')
+            const script = require('./\.github/workflows/scripts/trustedPartners.js')
             script({github, context})
