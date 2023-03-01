@@ -16,8 +16,8 @@ module.exports = async ({github,context}) => {
         if (checkForTfCoreRepo(context)) {
           for (const [key, value] of prReviewersTrustedPartners.entries()) {
             if (prTitle.toLowerCase().indexOf(key.toLowerCase()) != -1) {
-                console.log("pr number ",github)
-                console.log("pr number ",context)
+                // console.log("pr number ",github)
+                console.log("pr number ",context.payload.number)
 
 
               return await github.rest.pulls.requestReviewers(
@@ -25,7 +25,7 @@ module.exports = async ({github,context}) => {
                     reviewers:value,
                     owner:context.repo.owner,
                     repo:context.repo.repo,
-                    pull_number:github.event.pull_request.number
+                    pull_number:context.payload.number
 
                     });
             }
