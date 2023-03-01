@@ -33,14 +33,18 @@ module.exports = async ({github,context}) => {
        */
       function checkForTfCoreRepo(context) {
         let isValidRepo = false;
+        console.log("checking for repo")
         if (context.payload.sender.login == 'copybara-service[bot]') {
           return isValidRepo;
         }
         let repos = CONSTENT_VALUES.GLOBALS.PR_TRIGGER_REPO.split(',');
+        console.log("checking for repo for const")
+
         if (context.payload.pull_request.html_url.includes(
                 CONSTENT_VALUES.GLOBALS.TENSORFLOW_CORE_REPO) &&
             context.payload.pull_request.base.ref.includes('master')) {
           isValidRepo = true;
+          console.log("my log check 47")
           return isValidRepo;
         } else if (
             repos.includes(context.payload.repository.name) &&
