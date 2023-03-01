@@ -1,7 +1,7 @@
+# only trigger on pull request opened events
 on:
-  issues:
-    types:
-      - closed
+  pull_request:
+    types: [ opened ]
 
 permissions:
   contents: read
