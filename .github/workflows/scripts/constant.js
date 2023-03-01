@@ -14,7 +14,7 @@ let CONSTENT_VALUES = {
             CLOSED: "closed"
         },
         TENSORFLOW_CORE_REPO: 'https://github.com/tensorflow/tensorflow/pull',
-        PR_TRIGGER_REPO: 'examples,keras'
+        PR_TRIGGER_REPO: 'testRep,keras'
     },
     MODULE: {
         CSAT: {
