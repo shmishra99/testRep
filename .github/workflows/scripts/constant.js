@@ -12,7 +12,9 @@ let CONSTENT_VALUES = {
         },
         STATE: {
             CLOSED: "closed"
-        }
+        },
+        TENSORFLOW_CORE_REPO: 'https://github.com/tensorflow/tensorflow/pull',
+        PR_TRIGGER_REPO: 'examples,keras'
     },
     MODULE: {
         CSAT: {
@@ -26,9 +28,18 @@ let CONSTENT_VALUES = {
             SATISFACTION_PARAM: 'entry.85265664=',
             ISSUEID_PRAM: '&entry.2137816233=',
             MSG: 'Are you satisfied with the resolution of your issue?',
-        }
+        },
+        TRUSTEDPARTNERS :{}
+
     }
     
 }
 
+const prReviewersTrustedPartners = new Map();
+prReviewersTrustedPartners.set('TF-TRT',['shmishr9956','shmishr9956','shmishr9956']);
+prReviewersTrustedPartners.set('TFTRT',['shmishr9956','shmishr9956','shmishr9956']);
+prReviewersTrustedPartners.set('TF:TRT',['shmishr9956','shmishr9956','shmishr9956']);
+prReviewersTrustedPartners.set('UPDATE',['shmishr9956','shmishr9956','shmishr9956']);
+
+CONSTENT_VALUES.MODULE.TRUSTEDPARTNERS = prReviewersTrustedPartners
 module.exports = CONSTENT_VALUES

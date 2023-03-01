@@ -12,30 +12,40 @@ module.exports = async ({github,context}) => {
         console.log("line 12",prTitle)
         console.log(
             'Entered triagePullRequestTrustedPartners for PR Title =', prTitle);
-        // if (checkForTfCoreRepo(context)) {
-        //   for (const [key, value] of prReviewersTrustedPartners.entries()) {
-        //     if (prTitle.toLowerCase().indexOf(key.toLowerCase()) != -1) {
-        //       return await context.octokit.pulls.requestReviewers(
-        //           context.pullRequest({reviewers: value}));
-        //     }
-        //   }
-        // }
+        let prReviewersTrustedPartners = CONSTENT_VALUES.MODULE.TRUSTEDPARTNERS
+        if (checkForTfCoreRepo(context)) {
+          for (const [key, value] of prReviewersTrustedPartners.entries()) {
+            if (prTitle.toLowerCase().indexOf(key.toLowerCase()) != -1) {
+              return await github.rest.pulls.requestReviewers(
+                  context.pullRequest({reviewers: value}));
+            }
+          }
+        }
 
     
 }
 
-/* 
-   Function to call git API to remove the label
-   delete one label at a time
-   
-*/
-async function rmLabel(queryObj,github){
-    
-    try{
-    await github.rest.issues.removeLabel(queryObj)
-    }
-    catch(e){
-        console.log(`Issue Number ${queryObj.number} Doesn't  have ${queryObj.name} label`)
-    }
-
-}
+      /**
+       * Determines if PR is from core repo
+       * @param {!Object} context
+       * @return {!bool} isValidRepo
+       */
+      function checkForTfCoreRepo(context) {
+        let isValidRepo = false;
+        if (context.payload.sender.login == 'copybara-service[bot]') {
+          return isValidRepo;
+        }
+        let repos = CONSTENT_VALUES.GLOBALS.PR_TRIGGER_REPO.split(',');
+        if (context.payload.pull_request.html_url.includes(
+                CONSTENT_VALUES.GLOBALS.TENSORFLOW_CORE_REPO) &&
+            context.payload.pull_request.base.ref.includes('master')) {
+          isValidRepo = true;
+          return isValidRepo;
+        } else if (
+            repos.includes(context.payload.repository.name) &&
+            context.payload.sender.login != 'copybara-service') {
+          console.log('repo is under autoAssignment list of repos.');
+          return true;
+        }
+        return isValidRepo;
+      }
