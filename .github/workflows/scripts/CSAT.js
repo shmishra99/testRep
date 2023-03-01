@@ -6,7 +6,6 @@ module.exports = async ({ github, context }) => {
     let base_url = ''
     console.log('Github event: issue_closed for issue =', issue)
     if (checkForCsatRepo(context)) {
-        console.log("inside if condi")
         for (const label of context.payload.issue.labels) {
             if (label.name.includes(CONSTENT_VALUES.GLOBALS.LABELS.BUG) ||
                 label.name.includes(CONSTENT_VALUES.GLOBALS.LABELS.BUG_INSTALL) ||
