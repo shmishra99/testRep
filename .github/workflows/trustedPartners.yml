@@ -1,7 +1,7 @@
 # only trigger on pull request opened events
 on:
   pull_request:
-    types: [ opened ]
+    types: [ opened,reopened ]
 
 permissions:
   contents: read
@@ -18,5 +18,3 @@ jobs:
           script: |
             const script = require('./\.github/workflows/scripts/issue-closed.js')
             script({github, context})
-
-            
