@@ -36,10 +36,10 @@ let CONSTENT_VALUES = {
 }
 
 const prReviewersTrustedPartners = new Map();
-prReviewersTrustedPartners.set('TF-TRT',['shmishra9956','shmishra9956','shmishra9956']);
-prReviewersTrustedPartners.set('TFTRT',['shmishra9956','shmishra9956','shmishra9956']);
-prReviewersTrustedPartners.set('TF:TRT',['shmishra9956','shmishra9956','shmishra9956']);
-prReviewersTrustedPartners.set('UPDATE',['shmishra9956','shmishra9956','shmishra9956']);
+prReviewersTrustedPartners.set('TF-TRT',['shmishra9956']);
+prReviewersTrustedPartners.set('TFTRT',['shmishra9956']);
+prReviewersTrustedPartners.set('TF:TRT',['shmishra9956']);
+prReviewersTrustedPartners.set('UPDATE',['shmishra9956']);
 
 CONSTENT_VALUES.MODULE.TRUSTEDPARTNERS = prReviewersTrustedPartners
 module.exports = CONSTENT_VALUES
