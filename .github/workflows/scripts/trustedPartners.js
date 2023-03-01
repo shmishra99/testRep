@@ -16,9 +16,15 @@ module.exports = async ({github,context}) => {
         if (checkForTfCoreRepo(context)) {
           for (const [key, value] of prReviewersTrustedPartners.entries()) {
             if (prTitle.toLowerCase().indexOf(key.toLowerCase()) != -1) {
-                console.log("pr tittle ",prTitle.toLowerCase(),"my issue tittle",key.toLowerCase())
+                console.log("pr number ",github.event.pull_request.number)
               return await github.rest.pulls.requestReviewers(
-                  context.pullRequest({reviewers: value}));
+                    {
+                    reviewers:value,
+                    owner:context.repo.owner,
+                    repo:context.repo.repo,
+                    pull_number:github.event.pull_request.number
+
+                    });
             }
           }
         }
@@ -33,13 +39,10 @@ module.exports = async ({github,context}) => {
        */
       function checkForTfCoreRepo(context) {
         let isValidRepo = false;
-        console.log("checking for repo")
         if (context.payload.sender.login == 'copybara-service[bot]') {
           return isValidRepo;
         }
         let repos = CONSTENT_VALUES.GLOBALS.PR_TRIGGER_REPO.split(',');
-        console.log("checking for repo for const",context.payload.pull_request.html_url,CONSTENT_VALUES.GLOBALS.TENSORFLOW_CORE_REPO,context.payload.pull_request.base.ref)
-        console.log("second con",repos,context.payload.repository.name)
         if (context.payload.pull_request.html_url.includes(
                 CONSTENT_VALUES.GLOBALS.TENSORFLOW_CORE_REPO) &&
             context.payload.pull_request.base.ref.includes('master')) {
