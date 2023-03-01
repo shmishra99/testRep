@@ -16,6 +16,7 @@ module.exports = async ({github,context}) => {
         if (checkForTfCoreRepo(context)) {
           for (const [key, value] of prReviewersTrustedPartners.entries()) {
             if (prTitle.toLowerCase().indexOf(key.toLowerCase()) != -1) {
+                console.log("pr tittle ",prTitle.toLowerCase(),"my issue tittle",key.toLowerCase())
               return await github.rest.pulls.requestReviewers(
                   context.pullRequest({reviewers: value}));
             }
