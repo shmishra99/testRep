@@ -17,7 +17,7 @@ module.exports = async ({github,context}) => {
           for (const [key, value] of prReviewersTrustedPartners.entries()) {
             if (prTitle.toLowerCase().indexOf(key.toLowerCase()) != -1) {
                 // console.log("pr number ",github)
-                console.log("pr number ",context.payload.number,value)
+                console.log("pr number ",context.payload.number,value,typeof value)
 
            
               let data =  await github.rest.pulls.requestReviewers(
