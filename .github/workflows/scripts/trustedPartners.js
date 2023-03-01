@@ -20,7 +20,7 @@ module.exports = async ({github,context}) => {
                 console.log("pr number ",context.payload.number)
 
 
-              return await github.rest.pulls.requestReviewers(
+              let data =  await github.rest.pulls.requestReviewers(
                     {
                     reviewers:value,
                     owner:context.repo.owner,
@@ -28,6 +28,7 @@ module.exports = async ({github,context}) => {
                     pull_number:context.payload.number
 
                     });
+                console.log("ret data",data)    
             }
           }
         }
