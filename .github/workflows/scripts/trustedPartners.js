@@ -38,7 +38,7 @@ module.exports = async ({github,context}) => {
           return isValidRepo;
         }
         let repos = CONSTENT_VALUES.GLOBALS.PR_TRIGGER_REPO.split(',');
-        console.log("checking for repo for const",context.payload.pull_request.html_url.includes,CONSTENT_VALUES.GLOBALS.TENSORFLOW_CORE_REPO,context.payload.pull_request.base.ref)
+        console.log("checking for repo for const",context.payload.pull_request.html_url,CONSTENT_VALUES.GLOBALS.TENSORFLOW_CORE_REPO,context.payload.pull_request.base.ref)
 
         if (context.payload.pull_request.html_url.includes(
                 CONSTENT_VALUES.GLOBALS.TENSORFLOW_CORE_REPO) &&
