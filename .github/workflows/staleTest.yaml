@@ -32,8 +32,7 @@ jobs:
           days-before-issue-stale: 0
           days-before-issue-close: 0
           stale-issue-label: "stale"
-          only-issue-labels: 
-           - stat:awaiting response
+          only-issue-labels: "stat:awaiting response"
           stale-issue-message: > 
             This issue is stale because it has been open for 7 days with no activity.
             It will be closed if no further activity occurs. Thank you.
@@ -50,9 +49,7 @@ jobs:
           days-before-issue-stale: 0
           days-before-issue-close: 0
           stale-issue-label: "stale"
-          any-of-labels: 
-           - stat:contribution welcome
-           - stat:good first issue
+          any-of-labels: "stat:contribution welcome,stat:good first issue"
           stale-issue-message: > 
             This issue is stale because it has been open for 180 days with no activity.
             It will be closed if no further activity occurs. Thank you.
