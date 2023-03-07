@@ -18,9 +18,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "30 1 * * *"
-
 jobs:
-  
   close-issues:
     runs-on: ubuntu-latest
     permissions:
@@ -33,7 +31,7 @@ jobs:
           days-before-issue-stale: 0
           days-before-issue-close: 0
           stale-issue-label: "stale"
-          only-issue-labels: "stat:awaiting response"
+          only-labels: "stat:awaiting response"
           stale-issue-message: > 
             This issue is stale because it has been open for 7 days with no activity.
             It will be closed if no further activity occurs. Thank you.
