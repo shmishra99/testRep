@@ -51,19 +51,3 @@ jobs:
           ignore-issue-updates: true
           ignore-pr-updates: true
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Contribution issues
-        uses: actions/stale@v5
-        with:
-          days-before-issue-stale: 1
-          days-before-issue-close: 1
-          stale-issue-label: "stale"
-          # reason for closed the issue default value is not_planned
-          close-issue-reason: completed
-          ignore-updates: true
-          any-of-labels: "stat:contribution welcome,stat:good first issue"
-          stale-issue-message: > 
-            This issue is stale because it has been open for 180 days with no activity.
-            It will be closed if no further activity occurs. Thank you.
-          close-issue-message: >
-            This issue was closed because it has been inactive for 1 year.
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
