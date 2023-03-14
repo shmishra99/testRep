@@ -47,6 +47,7 @@ jobs:
           days-before-pr-close: 0
           stale-pr-message: "This PR is stale because it has been open for 14 days with no activity. It will be closed if no further activity occurs. Thank you."
           close-pr-message: "This PR was closed because it has been inactive for 14 days since being marked as stale. Please reopen if you'd like to work on this further."
+          ignore-updates: true
           repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Contribution issues
         uses: actions/stale@v5
@@ -56,6 +57,7 @@ jobs:
           stale-issue-label: "stale"
           # reason for closed the issue default value is not_planned
           close-issue-reason: completed
+          ignore-updates: true
           any-of-labels: "stat:contribution welcome,stat:good first issue"
           stale-issue-message: > 
             This issue is stale because it has been open for 180 days with no activity.
