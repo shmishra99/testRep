@@ -31,7 +31,7 @@ jobs:
       - name: Awaiting response issues
         uses: actions/stale@v5
         with:
-          days-before-issue-stale: 0
+          days-before-issue-stale: 1
           days-before-issue-close: 1
           stale-issue-label: "stale"
           # reason for closed the issue default value is not_planned
@@ -54,7 +54,7 @@ jobs:
       - name: Contribution issues
         uses: actions/stale@v5
         with:
-          days-before-issue-stale: 0
+          days-before-issue-stale: 1
           days-before-issue-close: 1
           stale-issue-label: "stale"
           # reason for closed the issue default value is not_planned
