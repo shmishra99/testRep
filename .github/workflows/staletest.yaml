@@ -45,7 +45,12 @@ jobs:
         # Number of days of inactivity before an Issue Request becomes stale
         days-before-issue-stale: 0
         # Number of days of inactivity before a stale Issue is closed
-        days-before-issue-close: 0
+        days-before-issue-close: 1
+        
+        ignore-updates: true
+        ignore-issue-updates: true
+        ignore-pr-updates: true
+        
         # reason for closed the issue default value is not_planned
         close-issue-reason: completed
         # Comma separated list of labels that can be assigned to issues to exclude them from being marked as stale
