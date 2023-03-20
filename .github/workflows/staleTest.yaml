@@ -29,9 +29,9 @@ jobs:
       - name: Awaiting response issues
         uses: actions/stale@v5
         with:
-          operations-per-run: 2
-          days-before-issue-stale: 0
-          days-before-issue-close: 0
+          operations-per-run: 500
+          days-before-issue-stale: 1
+          days-before-issue-close: 1
           stale-issue-label: "stale"
           # reason for closed the issue default value is not_planned
           close-issue-reason: completed
