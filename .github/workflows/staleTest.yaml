@@ -29,6 +29,7 @@ jobs:
       - name: Awaiting response issues
         uses: actions/stale@v5
         with:
+          remove-stale-when-updated: false
           days-before-issue-stale: 0
           days-before-issue-close: 1
           stale-issue-label: "stale"
