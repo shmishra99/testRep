@@ -15,7 +15,6 @@
 
 name: Close inactive issues
 on:
-  workflow_dispatch: 
   schedule:
     - cron: "30 1 * * *"
 
@@ -29,11 +28,8 @@ jobs:
       - name: Awaiting response issues
         uses: actions/stale@v5
         with:
-          operations-per-run: 500
-          days-before-issue-stale: 1
+          days-before-issue-stale: 0
           days-before-issue-close: 1
-          #if somebody comments on stalled issues then it will not remove the stale label.
-          ignore-issue-updates: true
           stale-issue-label: "stale"
           # reason for closed the issue default value is not_planned
           close-issue-reason: completed
@@ -52,9 +48,8 @@ jobs:
       - name: Contribution issues
         uses: actions/stale@v5
         with:
-          operations-per-run: 2
-          days-before-issue-stale: 0
-          days-before-issue-close: 0
+          days-before-issue-stale: 180
+          days-before-issue-close: 365
           stale-issue-label: "stale"
           # reason for closed the issue default value is not_planned
           close-issue-reason: completed
