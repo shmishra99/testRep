@@ -51,6 +51,8 @@ jobs:
       - name: Contribution issues
         uses: actions/stale@v7
         with:
+          operations-per-run: 1000
+          remove-stale-when-updated: false
           days-before-issue-stale: 180
           days-before-issue-close: 365
           stale-issue-label: "stale"
