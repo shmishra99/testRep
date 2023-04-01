@@ -17,12 +17,15 @@ module.exports = async ({ github, context }) => {
 //     repo: context.repo.repo,
 
 //   });
+   
+ let d = new Date("2023-04-01T16:08:04Z").toISOString() 
 
   let logs  = await github.rest.issues.listForRepo({
     owner: context.repo.owner,
     repo: context.repo.repo,
     state:"closed",
-    labels:"stale"
+    labels:"stale",
+    since:d
 
   });
 
