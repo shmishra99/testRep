@@ -18,7 +18,6 @@ let logs =  await github.rest.issues.listEventsForRepo({
 
   });
 
-
-  console.log("logss ",JSON.stringify(logs))
+  console.log("logss ",logs.data[0].logs[1])
 
 }
