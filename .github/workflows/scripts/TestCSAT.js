@@ -53,6 +53,7 @@ module.exports = async ({ github, context }) => {
        context.payload.issue = {}
        context.issue= {}
        console.log("line 55",context)
+       console.log("line 56",ISSUESLIST[i].number)
        context.issue.number = ISSUESLIST[i].number
       //  console.log("line 55", context.issue.number)
        context.payload.issue.labels = ISSUESLIST[i].labels
