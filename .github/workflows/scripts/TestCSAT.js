@@ -11,15 +11,23 @@ module.exports = async ({ github, context }) => {
 
 // })
 
-let logs =  await github.rest.issues.listEventsForRepo({
+// let logs =  await github.rest.issues.listEventsForRepo({
     
+//     owner: context.repo.owner,
+//     repo: context.repo.repo,
+
+//   });
+
+  let logs  = github.rest.issues.listForRepo({
     owner: context.repo.owner,
     repo: context.repo.repo,
+    state:"closed"
 
   });
-  console.log("logs length",logs.data.length)
 
-  console.log("logss ",logs.data[0],logs.data[1])
+  // console.log("logs length",logs.data.length)
+
+  console.log("logss ",logs.data])
 
 
 }
