@@ -7,7 +7,7 @@ module.exports = async ({ github, context }) => {
     issue_number: context.issue.number,
     owner: context.repo.owner,
     repo: context.repo.repo,
-    job_id: 124146945
+    job_id: 596412890
 })
   console.log("logss ",logs)
 
