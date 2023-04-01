@@ -52,7 +52,7 @@ module.exports = async ({ github, context }) => {
        con.payload.issue = {}
        con.payload.issue.labels = ISSUESLIST[i].labels
        con.payload.issue.html_url = ISSUESLIST[i].number
-       console.log("line 54",con)
+       console.log("line 54",JSON.parse(con))
        csat(github,con)
        
 

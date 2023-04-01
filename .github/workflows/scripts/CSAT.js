@@ -13,7 +13,7 @@ module.exports = async ({ github, context }) => {
                 label.name.includes(CONSTENT_VALUES.GLOBALS.LABELS.TYPE_SUPPORT) ||
                 label.name.includes(CONSTENT_VALUES.GLOBALS.LABELS.TYPE_DOCS_BUG)) {
                 console.log(`label-${label.name}, posting CSAT survey for issue =${issue}`)
-               
+                
                 if (context.repo.repo.includes('mediapipe'))
                     base_url = CONSTENT_VALUES.MODULE.CSAT.MEDIA_PIPE_BASE_URL;
                 else
