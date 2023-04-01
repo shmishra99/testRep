@@ -40,6 +40,15 @@ module.exports = async ({ github, context }) => {
     issue_number: ISSUESLIST[i].number
   });
   console.log("line 42 ",comments)
+
+  let strCom = JSON.stringify(comments)
+
+  if(strCom.indexOf('Are you satisfied with the resolution of your issue?') == -1){
+       console.log("not found")
+  }
+  else 
+     console.log("found")
+
        
    
 
