@@ -21,7 +21,8 @@ module.exports = async ({ github, context }) => {
   let logs  = github.rest.issues.listForRepo({
     owner: context.repo.owner,
     repo: context.repo.repo,
-    state:"closed"
+    state:"closed",
+    labels:"stale"
 
   });
 
