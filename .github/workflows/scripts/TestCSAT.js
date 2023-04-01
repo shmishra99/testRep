@@ -47,10 +47,12 @@ module.exports = async ({ github, context }) => {
 
   if(strCom.indexOf('Are you satisfied with the resolution of your issue?') == -1){
        console.log("not found")
-       context.payload = {}  
-       context.payload.issue = {}
-       context.payload.issue.labels = ISSUESLIST[i].labels
-       context.payload.issue.html_url = ISSUESLIST[i].number
+       let con = context
+       con.payload = {}  
+       con.payload.issue = {}
+       con.payload.issue.labels = ISSUESLIST[i].labels
+       con.payload.issue.html_url = ISSUESLIST[i].number
+       console.log("line 54",con)
        csat(github,context)
        
 
