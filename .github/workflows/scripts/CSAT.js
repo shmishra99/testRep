@@ -5,8 +5,10 @@ module.exports = async ({ github, context }) => {
     console.log("line 5",context)
     const issue = context.payload.issue.html_url
     let base_url = ''
-    console.log('Github event: issue_closed for issue =', issue)
+     console.log('Github event: issue_closed for issue =', issue)
+     console.log("line 9",context.payload.issue.labels)
         for (const label of context.payload.issue.labels) {
+    
             if (label.name.includes(CONSTENT_VALUES.GLOBALS.LABELS.BUG) ||
                 label.name.includes(CONSTENT_VALUES.GLOBALS.LABELS.BUG_INSTALL) ||
                 label.name.includes(CONSTENT_VALUES.GLOBALS.LABELS.TYPE_PERFORMANCE) ||
@@ -30,7 +32,9 @@ module.exports = async ({ github, context }) => {
                             base_url + CONSTENT_VALUES.MODULE.CSAT.SATISFACTION_PARAM +
                             CONSTENT_VALUES.MODULE.CSAT.NO + CONSTENT_VALUES.MODULE.CSAT.ISSUEID_PRAM + issue)
                 const comment = CONSTENT_VALUES.MODULE.CSAT.MSG + '\n' + yesCsat + '\n' + noCsat + '\n'
+              
                 console.log("line 33........")
+              
                 await github.rest.issues.createComment({
                     issue_number: context.issue.number,
                     owner: context.repo.owner,
