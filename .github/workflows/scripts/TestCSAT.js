@@ -39,7 +39,7 @@ module.exports = async ({ github, context }) => {
     repo: context.repo.repo,
     issue_number: ISSUESLIST[i].number
   });
-  console.log("line 42 ",comments)
+  // console.log("line 42 ",comments)
 
   let strCom = JSON.stringify(comments)
 
