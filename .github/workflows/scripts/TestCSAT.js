@@ -28,6 +28,6 @@ module.exports = async ({ github, context }) => {
 
   // console.log("logs length",logs.data.length)
  
-  console.log("logss ",logs.data)
+  console.log("logss ",logs)
 
 }
