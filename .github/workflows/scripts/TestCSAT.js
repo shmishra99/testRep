@@ -18,9 +18,10 @@ module.exports = async ({ github, context }) => {
 
 //   });
    
- let d = new Date("2023-04-01T16:08:04Z").toISOString() 
+ 
+ let d = new Date("2023-04-01T16:08:04Z").toISOString() ///  
 
-  let logs  = await github.rest.issues.listForRepo({
+  let obj  = await github.rest.issues.listForRepo({
     owner: context.repo.owner,
     repo: context.repo.repo,
     state:"closed",
@@ -29,8 +30,23 @@ module.exports = async ({ github, context }) => {
 
   });
 
+  let ISSUESLIST = obj.data
+
+ for(let i=0;i<ISSUESLIST.length;i++){
+        
+  let comments = await github.rest.issues.listComments({
+    owner: context.repo.owner,
+    repo: context.repo.repo,
+    issue_number: ISSUESLIST[i].number
+  });
+  console.log("line 42 ",comments)
+       
+   
+
+ }
+  
   // console.log("logs length",logs.data.length)
  
-  console.log("logss ",logs)
+  // console.log("logss ",logs)
 
 }

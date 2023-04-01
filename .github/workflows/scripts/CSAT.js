@@ -5,7 +5,6 @@ module.exports = async ({ github, context }) => {
     const issue = context.payload.issue.html_url
     let base_url = ''
     console.log('Github event: issue_closed for issue =', issue)
-    if (checkForCsatRepo(context)) {
         for (const label of context.payload.issue.labels) {
             if (label.name.includes(CONSTENT_VALUES.GLOBALS.LABELS.BUG) ||
                 label.name.includes(CONSTENT_VALUES.GLOBALS.LABELS.BUG_INSTALL) ||
@@ -42,14 +41,14 @@ module.exports = async ({ github, context }) => {
         }
     }
 
-}
 
 
-function checkForCsatRepo(context) {
-    let repos = CONSTENT_VALUES.MODULE.CSAT.CSAT_INCLUDES_REPO.split(',');
-    if (repos.includes(context.repo.repo)) {
-      console.log('repo is under CSAT list of repos');
-      return true;
-    }
-    return false;
-  }
+
+// function checkForCsatRepo(context) {
+//     let repos = CONSTENT_VALUES.MODULE.CSAT.CSAT_INCLUDES_REPO.split(',');
+//     if (repos.includes(context.repo.repo)) {
+//       console.log('repo is under CSAT list of repos');
+//       return true;
+//     }
+//     return false;
+//   }
