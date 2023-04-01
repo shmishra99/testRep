@@ -30,7 +30,7 @@ module.exports = async ({ github, context }) => {
                             base_url + CONSTENT_VALUES.MODULE.CSAT.SATISFACTION_PARAM +
                             CONSTENT_VALUES.MODULE.CSAT.NO + CONSTENT_VALUES.MODULE.CSAT.ISSUEID_PRAM + issue)
                 const comment = CONSTENT_VALUES.MODULE.CSAT.MSG + '\n' + yesCsat + '\n' + noCsat + '\n'
-
+                console.log("line 33........")
                 await github.rest.issues.createComment({
                     issue_number: context.issue.number,
                     owner: context.repo.owner,
