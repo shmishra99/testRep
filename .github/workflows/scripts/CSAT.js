@@ -2,6 +2,7 @@
 const CONSTENT_VALUES = require('./constant')
 
 module.exports = async ({ github, context }) => {
+    console.log("line 5",context)
     const issue = context.payload.issue.html_url
     let base_url = ''
     console.log('Github event: issue_closed for issue =', issue)
