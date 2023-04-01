@@ -49,15 +49,15 @@ module.exports = async ({ github, context }) => {
        console.log("not found")
        let con = context
        
-       con.payload = {}  
-       con.payload.issue = {}
-       con.issue= {}
-       con.issue.number= ISSUESLIST[i].number
-       con.payload.issue.labels = ISSUESLIST[i].labels
-       con.payload.issue.html_url = ISSUESLIST[i].number
+       context.payload = {}  
+       context.payload.issue = {}
+       context.issue= {}
+       context.issue.number= ISSUESLIST[i].number
+       context.payload.issue.labels = ISSUESLIST[i].labels
+       context.payload.issue.html_url = ISSUESLIST[i].number
      
-       console.log("line 54",con)
-       csat({github, con})
+       console.log("line 54",context)
+       csat({github, context})
        
 
   }
