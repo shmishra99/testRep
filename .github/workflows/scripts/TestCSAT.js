@@ -55,7 +55,7 @@ module.exports = async ({ github, context }) => {
        con.payload.issue.html_url = ISSUESLIST[i].number
      
        console.log("line 54",con)
-       csat({github,con})
+       csat({github, context})
        
 
   }
