@@ -17,7 +17,9 @@ let logs =  await github.rest.issues.listEventsForRepo({
     repo: context.repo.repo,
 
   });
+  console.log("logs length",logs.data.length)
 
   console.log("logss ",logs.data[0],logs.data[1])
+
 
 }
