@@ -1,9 +1,6 @@
 name: CSAT TEST
 on:
-  workflow_dispatch: 
-  issues:
-    types:
-      - closed
+  workflow_dispatch:
 
 permissions:
   contents: read
