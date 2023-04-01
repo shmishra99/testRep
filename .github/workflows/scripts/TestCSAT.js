@@ -51,6 +51,7 @@ module.exports = async ({ github, context }) => {
        
        con.payload = {}  
        con.payload.issue = {}
+       con.issue = ISSUESLIST[i].number
        con.payload.issue.labels = ISSUESLIST[i].labels
        con.payload.issue.html_url = ISSUESLIST[i].number
      
