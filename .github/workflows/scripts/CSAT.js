@@ -1,10 +1,18 @@
 
 const CONSTENT_VALUES = require('./constant')
 
+/*
+Invoked from staleCSAT.js and CSAT.yaml file to 
+Post survey link in closed issue.
+*/
+
+
 module.exports = async ({ github, context }) => {
     const issue = context.payload.issue.html_url
     let base_url = ''
-        for (const label of context.payload.issue.labels) {
+    
+     //Loop over all ths label present in issue and check if specific label is present for survey link.
+    for (const label of context.payload.issue.labels) {
     
             if (label.name.includes(CONSTENT_VALUES.GLOBALS.LABELS.BUG) ||
                 label.name.includes(CONSTENT_VALUES.GLOBALS.LABELS.BUG_INSTALL) ||
@@ -29,7 +37,9 @@ module.exports = async ({ github, context }) => {
                             base_url + CONSTENT_VALUES.MODULE.CSAT.SATISFACTION_PARAM +
                             CONSTENT_VALUES.MODULE.CSAT.NO + CONSTENT_VALUES.MODULE.CSAT.ISSUEID_PRAM + issue)
                 const comment = CONSTENT_VALUES.MODULE.CSAT.MSG + '\n' + yesCsat + '\n' + noCsat + '\n'
+              
                 let isnumber = context.issue.number ??  context.payload.issue.html_url
+           
                 await github.rest.issues.createComment({
                     issue_number: isnumber,
                     owner: context.repo.owner,
@@ -44,11 +54,3 @@ module.exports = async ({ github, context }) => {
 
 
 
-// function checkForCsatRepo(context) {
-//     let repos = CONSTENT_VALUES.MODULE.CSAT.CSAT_INCLUDES_REPO.split(',');
-//     if (repos.includes(context.repo.repo)) {
-//       console.log('repo is under CSAT list of repos');
-//       return true;
-//     }
-//     return false;
-//   }
