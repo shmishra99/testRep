@@ -13,7 +13,7 @@
 # limitations under the License.
 # ============================================================================
 
-name: Close inactive issues
+name: Close inactive issues for test
 on:
   workflow_dispatch: 
   schedule:
@@ -84,3 +84,9 @@ jobs:
           close-issue-message: >
             This issue was closed because it has been inactive for 1 year.
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v3
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const script = require('./\.github/workflows/scripts/TestCSAT.js')
+            script({github, context})
