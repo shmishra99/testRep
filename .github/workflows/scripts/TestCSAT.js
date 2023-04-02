@@ -10,7 +10,7 @@ module.exports = async ({ github, context }) => {
   let closeTime = totalMilliSeconds-millisecondsToSubtract
   let newDate = new Date(closeTime)
   let ISOCloseTime = newDate.toISOString() 
-  //  closeTime = closeTime.slice(0, 19)+ 'Z'
+  
   let closeTimeIssues  = await github.rest.issues.listForRepo({
     owner: context.repo.owner,
     repo: context.repo.repo,
@@ -29,6 +29,7 @@ module.exports = async ({ github, context }) => {
   });
  
   let strCom = JSON.stringify(comments)
+  console.log("line 32",strCom)
   if(strCom.indexOf('Are you satisfied with the resolution of your issue?') == -1){
        console.log("not found")
        context.payload.issue = {}
