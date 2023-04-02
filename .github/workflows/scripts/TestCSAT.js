@@ -29,7 +29,7 @@ module.exports = async ({ github, context }) => {
   });
  
   let strCom = JSON.stringify(comments)
-  console.log("line 32",strCom)
+
   if(strCom.indexOf('Are you satisfied with the resolution of your issue?') == -1){
        console.log("not found")
        context.payload.issue = {}
