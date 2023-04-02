@@ -34,7 +34,7 @@ console.log("line 23",ISSUESLIST)
        context.payload.issue = {}
        context.payload.issue.number = ISSUESLIST[i].number
        context.payload.issue.labels = ISSUESLIST[i].labels
-       context.payload.issue.html_url = ISSUESLIST[i].number
+       context.payload.issue.html_url = ISSUESLIST[i].html_url
       
        csat({github, context})
   }
