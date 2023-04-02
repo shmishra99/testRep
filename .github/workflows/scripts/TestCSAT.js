@@ -8,7 +8,8 @@ module.exports = async ({ github, context }) => {
   let minutes = 30
   let millisecondsToSubtract = minutes * 60 * 1000;
   let closeTime = totalMilliSeconds-millisecondsToSubtract
-  let ISOCloseTime = closeTime.toISOString() 
+  let newDate = new Date(closeTime)
+  let ISOCloseTime = newDate.toISOString() 
   //  closeTime = closeTime.slice(0, 19)+ 'Z'
   let closeTimeIssues  = await github.rest.issues.listForRepo({
     owner: context.repo.owner,
