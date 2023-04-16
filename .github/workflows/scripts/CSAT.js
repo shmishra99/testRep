@@ -37,7 +37,7 @@ module.exports = async ({ github, context }) => {
                             base_url + CONSTENT_VALUES.MODULE.CSAT.SATISFACTION_PARAM +
                             CONSTENT_VALUES.MODULE.CSAT.NO + CONSTENT_VALUES.MODULE.CSAT.ISSUEID_PRAM + issue)
                 const comment = CONSTENT_VALUES.MODULE.CSAT.MSG + '\n' + yesCsat + '\n' + noCsat + '\n'
-              
+
                 let isnumber = context.issue.number ??  context.payload.issue.number
            
                 await github.rest.issues.createComment({

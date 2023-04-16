@@ -18,5 +18,3 @@ jobs:
           script: |
             const script = require('./\.github/workflows/scripts/CSAT.js')
             script({github, context})
-
-            

@@ -1,6 +1,8 @@
-name: CSAT TEST
+name: CSAT-disable
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "30 1 * * *"
 
 permissions:
   contents: read
@@ -15,7 +17,5 @@ jobs:
       - uses: actions/github-script@v6
         with:
           script: |
-            const script = require('./\.github/workflows/scripts/staleCSAT.js')
+            const script = require('./\.github/workflows/scripts/CSAT-disable.js')
             script({github, context})
-
-            
