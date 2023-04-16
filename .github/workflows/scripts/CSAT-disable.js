@@ -31,7 +31,7 @@ module.exports = async ({ github, context }) => {
         let diffInDays = timeDiff / (1000 * 60 * 60 * 24)
         console.log(`Issue is ${diffInDays} days old.`)
         
-        if(diffInDays <= 0)
+        if(diffInDays <= 7)
             continue
         
         console.log("Fetching all the comments from issue number :",issue.number)
@@ -51,7 +51,7 @@ module.exports = async ({ github, context }) => {
           let currentEpoch = new Date();
           let timeDiff = currentEpoch - commentTime
           let diffInDays = timeDiff / (1000 * 60 * 60 * 24)
-          if (diffInDays >= 0 && comment.created_at && comment.body.indexOf(CONSTENT_VALUES.MODULE.CSAT.MSG) != -1) {
+          if (diffInDays >= 7 && comment.created_at && comment.body.indexOf(CONSTENT_VALUES.MODULE.CSAT.MSG) != -1) {
             console.log("Comment details udpated for issue number: ", issue.number)
             await github.rest.issues.updateComment({
               owner: context.payload.repository.owner.login,
