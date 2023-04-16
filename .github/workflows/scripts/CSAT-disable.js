@@ -31,7 +31,7 @@ module.exports = async ({ github, context }) => {
         let diffInDays = timeDiff / (1000 * 60 * 60 * 24)
         console.log(`Issue is ${diffInDays} days old.`)
         
-        if(diffInDays >= 0)
+        if(diffInDays <= 0)
             continue
         
         console.log("Fetching all the comments from issue number :",issue.number)
