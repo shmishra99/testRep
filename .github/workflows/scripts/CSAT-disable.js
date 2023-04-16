@@ -8,8 +8,6 @@ Post survey link in closed issue.
 
 
 module.exports = async ({ github, context }) => {
-    const issue = context.payload.issue.html_url
-    console.log('Github event: issue_closed for issue = ', issue);
     console.log("Owner of the repo = ", context.payload.repository.owner.login)
 
     for (let i = 1; i < 3; i++) {
