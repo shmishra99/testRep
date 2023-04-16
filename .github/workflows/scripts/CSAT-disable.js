@@ -52,12 +52,12 @@ module.exports = async ({ github, context }) => {
           let timeDiff = currentEpoch - commentTime
           let diffInDays = timeDiff / (1000 * 60 * 60 * 24)
           if (diffInDays >= 0 && comment.created_at && comment.body.indexOf(CONSTENT_VALUES.MODULE.CSAT.MSG) != -1) {
-            console.log("issue details udpated for issue number: ", issue.number)
+            console.log("Comment details udpated for issue number: ", issue.number)
             await github.rest.issues.updateComment({
               owner: context.payload.repository.owner.login,
               repo: context.payload.repository.name,
               comment_id: comment.id,
-              body: constants.msg + '\n' + "Yes" + '\n' + "No" + '\n'
+              body: CONSTENT_VALUES.MODULE.CSAT.MSG + '\n' + "Yes" + '\n' + "No" + '\n'
             });
           }
         }
