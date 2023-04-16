@@ -29,17 +29,20 @@ module.exports = async ({ github, context }) => {
         let currentEpoch = new Date();
         let timeDiff = currentEpoch - issueClose
         let diffInDays = timeDiff / (1000 * 60 * 60 * 24)
-        console.log(`Issue is ${diffInDays} old.`)
+        console.log(`Issue is ${diffInDays} days old.`)
+        
         if(diffInDays >= 0)
             continue
-
+        
+        console.log("Fetching all the comments from issue number :",issue.number)
+      
         const issueComments = await github.rest.issues.listComments({
           owner: context.payload.repository.owner.login,
           repo: context.payload.repository.name,
           per_page: 100,
           issue_number: issue.number,
-
         });
+
         
         const commentsList = issueComments.data;
         for (let i = 0; i < commentsList.length; i++) {
