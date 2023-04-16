@@ -23,7 +23,6 @@ module.exports = async ({ github, context }) => {
       for (let i = 0; i < listIssues.length; i++) {
         const issue = listIssues[i];
 
-        issue.closed_at
         let issueClose = new Date(issue.closed_at);
         let currentEpoch = new Date();
         let timeDiff = currentEpoch - issueClose
