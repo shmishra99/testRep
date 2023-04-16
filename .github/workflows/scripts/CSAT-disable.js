@@ -11,6 +11,7 @@ module.exports = async ({ github, context }) => {
     console.log("Owner of the repo = ", context.payload.repository.owner.login)
 
     for (let i = 1; i < 3; i++) {
+      console.log("Running for page :", i)
       const issueDetails = await github.rest.issues.listForRepo({
         owner: context.payload.repository.owner.login,
         repo: context.payload.repository.name,
@@ -18,16 +19,17 @@ module.exports = async ({ github, context }) => {
         state: "closed",
         page: i,
       });
-
+     
       const listIssues = issueDetails.data;
       for (let i = 0; i < listIssues.length; i++) {
         const issue = listIssues[i];
-
+        console.log("Pick issue number : ",issue.number)
+        console.log("Issue closed at : ",issue.closed_at)
         let issueClose = new Date(issue.closed_at);
         let currentEpoch = new Date();
         let timeDiff = currentEpoch - issueClose
         let diffInDays = timeDiff / (1000 * 60 * 60 * 24)
-        
+        console.log(`Issue is ${diffInDays} old.`)
         if(diffInDays >= 0)
             continue
 
@@ -38,6 +40,7 @@ module.exports = async ({ github, context }) => {
           issue_number: issue.number,
 
         });
+        
         const commentsList = issueComments.data;
         for (let i = 0; i < commentsList.length; i++) {
           let comment = commentsList[i];
