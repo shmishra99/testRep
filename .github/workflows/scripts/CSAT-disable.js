@@ -28,7 +28,7 @@ module.exports = async ({ github, context }) => {
         let timeDiff = currentEpoch - issueClose
         let diffInDays = timeDiff / (1000 * 60 * 60 * 24)
         
-        if(diffInDays > 0)
+        if(diffInDays >= 0)
             continue
 
         const issueComments = await github.rest.issues.listComments({
@@ -45,7 +45,7 @@ module.exports = async ({ github, context }) => {
           let currentEpoch = new Date();
           let timeDiff = currentEpoch - commentTime
           let diffInDays = timeDiff / (1000 * 60 * 60 * 24)
-          if (diffInDays > 0 && comment.created_at && comment.body.indexOf(constants.msg) != -1) {
+          if (diffInDays >= 0 && comment.created_at && comment.body.indexOf(constants.msg) != -1) {
             console.log("issue details udpated for issue number: ", issue.number)
             await github.rest.issues.updateComment({
               owner: context.payload.repository.owner.login,
