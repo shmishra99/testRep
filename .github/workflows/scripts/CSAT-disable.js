@@ -53,7 +53,7 @@ module.exports = async ({ github, context }) => {
           let currentEpoch = new Date();
           let timeDiff = currentEpoch - commentTime
           let diffInDays = timeDiff / (1000 * 60 * 60 * 24)
-          if (diffInDays >= 7 && comment.created_at && comment.body.indexOf(CONSTENT_VALUES.MODULE.CSAT.MSG) != -1) {
+          if (diffInDays >= 0 && comment.created_at && comment.body.indexOf(CONSTENT_VALUES.MODULE.CSAT.MSG) != -1) { //change 0 to 7
             console.log("Comment details udpated for issue number: ", issue.number)
             await github.rest.issues.updateComment({
               owner: context.payload.repository.owner.login,
