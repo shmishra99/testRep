@@ -10,12 +10,14 @@ Post survey link in closed issue.
 module.exports = async ({ github, context }) => {
     console.log("Owner of the repo = ", context.payload.repository.owner.login)
 
-    for (let i = 1; i < 3; i++) {
+    for (let i = 1; i <2; i++) {  //change 2 to 4
       console.log("Running for page :", i)
+   
       const issueDetails = await github.rest.issues.listForRepo({
         owner: context.payload.repository.owner.login,
         repo: context.payload.repository.name,
-        per_page: 100,    
+        per_page: 1,    //change 1 to 100 
+        sort:"updated", 
         state: "closed",
         page: i,
       });
@@ -31,7 +33,7 @@ module.exports = async ({ github, context }) => {
         let diffInDays = timeDiff / (1000 * 60 * 60 * 24)
         console.log(`Issue is ${diffInDays} days old.`)
         
-        if(diffInDays <= 7)
+        if(diffInDays <= 0) //change 0 to 7
             continue
         
         console.log("Fetching all the comments from issue number :",issue.number)
@@ -57,7 +59,7 @@ module.exports = async ({ github, context }) => {
               owner: context.payload.repository.owner.login,
               repo: context.payload.repository.name,
               comment_id: comment.id,
-              body: CONSTENT_VALUES.MODULE.CSAT.MSG + '\n' + "Yes" + '\n' + "No" + '\n'
+              body: CONSTENT_VALUES.MODULE.CSAT.DISABLEMSG + "Closed" + '\n' + "Yes" + '\n' + "No" + '\n'
             });
           }
         }
