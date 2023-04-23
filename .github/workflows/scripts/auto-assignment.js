@@ -17,7 +17,7 @@ module.exports = async ({ github, context }) =>  {
         'issue Number =', issueNumber + ', assigning issue to:',
         assigneeForIssue);
       const addAssigneeParams = context.issue({ assignees: [assigneeForIssue] });
-      return context.octokit.issues.addAssignees(addAssigneeParams);
+      return github.rest.issues.addAssignees(addAssigneeParams);
 
   }
 
