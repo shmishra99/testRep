@@ -1,6 +1,5 @@
 name: auto-assignment
 on:
-  workflow-dispatch: 
   issue_comment:
     types:
       - created
