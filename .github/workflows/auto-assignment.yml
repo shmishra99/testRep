@@ -1,8 +1,8 @@
 name: auto-assignment
 on:
-  issue_comment:
+  issues:
     types:
-      - created
+      - opened
 
 permissions:
   contents: read
