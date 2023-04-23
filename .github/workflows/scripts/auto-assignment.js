@@ -5,7 +5,7 @@ module.exports = async ({ github, context }) =>  {
     const assigneesList = CONSTENT_VALUES.MODULE.ASSIGNEES;
 
     console.log("entered auto assignment for this issue:  ", issueNumber);
-    if (!assignees.length) {
+    if (!assigneesList.length) {
       console.log('No assignees found for this repo.');
       return;
     }
