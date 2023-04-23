@@ -3,7 +3,7 @@ const CONSTENT_VALUES = require('./constant');
 module.exports = async ({ github, context }) =>  {
     const issueNumber = context.payload.issue.number;
     const assigneesList = CONSTENT_VALUES.MODULE.ASSIGNEES;
-
+    console.log("assignee list",assigneesList)
     console.log("entered auto assignment for this issue:  ", issueNumber);
     if (!assigneesList.length) {
       console.log('No assignees found for this repo.');
