@@ -30,7 +30,10 @@ let CONSTENT_VALUES = {
             MSG: 'Are you satisfied with the resolution of your issue?',
             DISABLEMSG:"Are you satisfied with the resolution of your issue (Closed)?"
         },
-        TRUSTEDPARTNERS :{}
+        TRUSTEDPARTNERS :{},
+        AUTO_ASSIGNMENT_LIST:["shmishr9956"]
+        
+
 
     }
     
