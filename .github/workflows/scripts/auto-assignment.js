@@ -21,27 +21,4 @@ module.exports = async ({ github, context }) =>  {
 
   }
 
-     /**
-       * Determines correct issue assignee
-       * @param {number} index
-       * @param {number} assignees
-       * @return {number}
-       */
-     async function getIndex(index, assignees) {
-        const i = 0;
-        let number = store.get(index);
-
-        if (number) {
-          const latest = parseInt(number) + 1;
-          if (latest >= assignees) {
-            store.put(index, '0');
-            return i;
-          }
-
-          store.put(index, latest);
-          return latest;
-        } else {
-          store.put(index, '0');
-          return i;
-        }
-      }
+   
