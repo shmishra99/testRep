@@ -31,7 +31,7 @@ let CONSTENT_VALUES = {
             DISABLEMSG:"Are you satisfied with the resolution of your issue (Closed)?"
         },
         TRUSTEDPARTNERS :{},
-        ASSIGNEES:["shmishr99"]
+        ASSIGNEES:["shmishra99"]
         
 
 
