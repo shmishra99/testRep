@@ -24,7 +24,7 @@ module.exports = async ({ github, context }) => {
     }
     // const assign = context.issue({ assignees: ['gbaned'] });
     let columnCardId = 4025673;
-
+    console.log("add lable..",labelsToAdd)
     await Promise
         .allSettled([
             github.rest.issues.addLabels({
@@ -37,7 +37,7 @@ module.exports = async ({ github, context }) => {
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: context.issue.number,
-                assignees: ['shmishr99']
+                assignees: ['shmishr99']   //change to gbaned
             }),
 
             github.rest.projects.createCard({
