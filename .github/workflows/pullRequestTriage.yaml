@@ -1,6 +1,7 @@
-name: CSAT TEST
 on:
-  workflow_dispatch:
+  pull_request:
+    types:
+      - opened
 
 permissions:
   contents: read
@@ -15,7 +16,5 @@ jobs:
       - uses: actions/github-script@v6
         with:
           script: |
-            const script = require('./\.github/workflows/scripts/staleCSAT.js')
+            const script = require('./\.github/workflows/scripts/pullRequestTriage.js')
             script({github, context})
-
-            
