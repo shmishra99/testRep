@@ -37,7 +37,7 @@ module.exports = async ({ github, context }) => {
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: context.issue.number,
-                assignees: ['shmishr99']   //change to gbaned
+                assignees: ['shmishra99']   //change to gbaned
             }),
 
             github.rest.projects.createCard({
