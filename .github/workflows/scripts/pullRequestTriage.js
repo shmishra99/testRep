@@ -47,6 +47,6 @@ module.exports = async ({ github, context }) => {
             })
         ])
         .then((result) => {
-            console.log(result.status);
-        });
+            console.log(result);
+        }).catch(e=>console.log(e));
 }
