@@ -9,12 +9,12 @@ permissions:
   pull-requests: write
 
 jobs:
-  welcome:2
+  welcome:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/github-script@v6
         with:
           script: |
-            const script = require('./\.github/workflows/scripts/CSAT.js')
-            script({github, context})
+             const script = require('./\.github/workflows/scripts/CSAT.js')
+             script({github, context})

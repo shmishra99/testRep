@@ -3,7 +3,6 @@ on:
     types:
       - opened
       - reopened
-
 name: pullRequestTriage
 
 permissions:
