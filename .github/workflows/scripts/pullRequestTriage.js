@@ -22,7 +22,7 @@ module.exports = async ({ github, context }) => {
     } else {
         labelsToAdd = 'size:XL';
     }
-    const assign = context.issue({ assignees: ['gbaned'] });
+    // const assign = context.issue({ assignees: ['gbaned'] });
     let columnCardId = 4025673;
 
     await Promise
