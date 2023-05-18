@@ -1,0 +1,20 @@
+on:
+  pull_request_review:
+    types: [submitted]
+
+name: pullRequestTriage
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const script = require('./\.github/workflows/scripts/pullRequestTriageApproved.js')
+            script({github, context})

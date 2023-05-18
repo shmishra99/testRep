@@ -31,7 +31,8 @@ let CONSTENT_VALUES = {
             DISABLEMSG:"Are you satisfied with the resolution of your issue (Closed)?"
         },
         TRUSTEDPARTNERS :{},
-        ASSIGNEES:["shmishra99"]
+        ASSIGNEES:["shmishra99"],
+        pullRequestTriageApprovedLabels: ['kokoro:force-run', 'ready to pull']
         
 
 
