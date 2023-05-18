@@ -2,7 +2,7 @@ on:
   pull_request_review:
     types: [submitted]
 
-name: pullRequestTriage
+name: pullRequestTriageApproved
 permissions:
   contents: read
   issues: write
