@@ -15,7 +15,7 @@ module.exports = async ({ github, context }) => {
     }
     let labelsToAdd = CONSTENT_VALUES.MODULE.pullRequestTriageApproved;
 
-    if(context.payload.review.state === 'approved'){
+    if(!context.payload.review.state === 'approved'){
   
         github.rest.issues.addLabels({
         owner: context.repo.owner,
