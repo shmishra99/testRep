@@ -22,7 +22,7 @@ module.exports = async ({ github, context }) => {
         owner: context.repo.owner,
         repo: context.repo.repo,
         issue_number: context.issue.number,
-        labels: [labelsToAdd]
+        labels: labelsToAdd
     })
 
 // }
