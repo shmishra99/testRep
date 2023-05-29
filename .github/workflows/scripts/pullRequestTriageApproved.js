@@ -8,7 +8,7 @@ Post survey link in closed issue.
 
 
 module.exports = async ({ github, context }) => {
-        console.log("my line 11")
+        console.log("my line 11",context.payload.sender.login)
     if (context.payload.sender.login == 'copybara-service[bot]' || 
         !context.payload.pull_request.base.ref.includes('master')) {
         return false;
