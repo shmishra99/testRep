@@ -14,7 +14,7 @@ module.exports = async ({ github, context }) => {
         return false;
     }
     console.log("my line 11....")
-    let labelsToAdd = CONSTENT_VALUES.MODULE.pullRequestTriageApproved;
+    let labelsToAdd = CONSTENT_VALUES.MODULE.pullRequestTriageApprovedLabels;
      console.log("my line 11....18",labelsToAdd)
 //     if(!(context.payload.review.state === 'approved')){ // remove !
   
