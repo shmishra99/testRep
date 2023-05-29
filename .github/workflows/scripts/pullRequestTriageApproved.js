@@ -16,7 +16,7 @@ module.exports = async ({ github, context }) => {
     console.log("my line 11....")
     let labelsToAdd = CONSTENT_VALUES.MODULE.pullRequestTriageApproved;
      console.log("my line 11....18")
-    if(!(context.payload.review.state === 'approved')){ // remove !
+//     if(!(context.payload.review.state === 'approved')){ // remove !
   
         github.rest.issues.addLabels({
         owner: context.repo.owner,
@@ -25,7 +25,7 @@ module.exports = async ({ github, context }) => {
         labels: [labelsToAdd]
     })
 
-}
+// }
      
      
 
