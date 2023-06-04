@@ -10,7 +10,7 @@ module.exports = async ({ github, context }) => {
   let closeTime = totalMilliSeconds-millisecondsToSubtract
   let newDate = new Date(closeTime)
   let ISOCloseTime = newDate.toISOString() 
-  console.log("issue type",github)
+  console.log("issue type",ISOCloseTime)
   let closeTimeIssues  = await github.rest.issues.listForRepo({
     owner: context.repo.owner,
     repo: context.repo.repo,
