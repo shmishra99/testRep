@@ -13,7 +13,7 @@
 # limitations under the License.
 # ============================================================================
 
-name: Close inactive issues for test
+name: Close inactive issues
 on:
   workflow_dispatch: 
   schedule:
@@ -35,7 +35,7 @@ jobs:
           #Comma separated list of labels that can be assigned to PRs to exclude them from being marked as stale
           exempt-pr-labels: "override-stale"
           #Limit the No. of API calls in one run default value is 30.
-          operations-per-run: 500
+          operations-per-run: 1000
           #Prevent to remove stale label when PRs or issues are updated.
           remove-stale-when-updated: false
           days-before-issue-stale: 0
@@ -51,11 +51,16 @@ jobs:
             This issue was closed because it has been inactive for 7 days since being marked as stale.
             Please reopen if you'd like to work on this further.
           days-before-pr-stale: 0
-          days-before-pr-close: 1
+          days-before-pr-close: 0
           stale-pr-message: "This PR is stale because it has been open for 14 days with no activity. It will be closed if no further activity occurs. Thank you."
           close-pr-message: "This PR was closed because it has been inactive for 14 days since being marked as stale. Please reopen if you'd like to work on this further."
-          
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v3
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const script = require('./\.github/workflows/scripts/TestCSAT.js')
+            script({github, context})
       - name: Contribution issues
         uses: actions/stale@v7
         with:
@@ -64,7 +69,7 @@ jobs:
           #Comma separated list of labels that can be assigned to PRs to exclude them from being marked as stale
           exempt-pr-labels: "override-stale"
           #Limit the No. of API calls in one run default value is 30.
-          operations-per-run: 500
+          operations-per-run: 1000
           #Prevent to remove stale label when PRs or issues are updated.
           remove-stale-when-updated: false
           days-before-issue-stale: 180
@@ -79,9 +84,3 @@ jobs:
           close-issue-message: >
             This issue was closed because it has been inactive for 1 year.
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/checkout@v3
-      - uses: actions/github-script@v6
-        with:
-          script: |
-            const script = require('./\.github/workflows/scripts/staleCSAT.js')
-            script({github, context})
