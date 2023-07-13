@@ -45,7 +45,7 @@ jobs:
         #Limit the No. of API calls in one run default value is 30. 
         operations-per-run: 1000 
         #Prevent to remove stale label when PRs or issues are updated. 
-        remove-stale-when-updated: false
+
        
         stale-pr-message: 'This PR is stale because it has been open 30 days with no activity. Remove stale label or comment or this will be closed in 5 days'
         days-before-stale: 30
