@@ -22,7 +22,6 @@ const CONSTENT_VALUES = require('./constant')
  */
 module.exports = async ({ github, context }) => {
     console.log("Owner of the repo = ", context.payload.repository.owner.login)
-   
     for (let i = 1; i <4; i++) { 
       console.log("Running for page :", i)
       const issueDetails = await github.rest.issues.listForRepo({
@@ -33,7 +32,6 @@ module.exports = async ({ github, context }) => {
         state: "closed",
         page: i,
       });
-     
       const listIssues = issueDetails.data;
       for (let i = 0; i < listIssues.length; i++) {
         const issue = listIssues[i];
@@ -65,7 +63,7 @@ module.exports = async ({ github, context }) => {
           let timeDiff = currentEpoch - commentTime
           let diffInDays = timeDiff / (1000 * 60 * 60 * 24)
           if (diffInDays >= 7 && comment.created_at && comment.body.indexOf(CONSTENT_VALUES.MODULE.CSAT.MSG) != -1) { 
-            console.log("Comment details udpated for issue number: ", issue.number)
+           console.log("CSAT link disabled for issue number: ", issue.number)
             await github.rest.issues.updateComment({
               owner: context.payload.repository.owner.login,
               repo: context.payload.repository.name,
