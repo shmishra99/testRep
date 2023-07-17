@@ -17,5 +17,5 @@ jobs:
       - uses: actions/github-script@v6
         with:
           script: |
-            const script = require('./\.github/workflows/scripts/CSAT-disable.js')
+            const script = require('./\.github/workflows/scripts/csat-disable.js')
             script({github, context})
