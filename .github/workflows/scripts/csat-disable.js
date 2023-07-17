@@ -1,18 +1,17 @@
 
 const CONSTENT_VALUES = require('./constant')
 
-/*
-Invoked from staleCSAT.js and CSAT.yaml file to 
-Post survey link in closed issue.
-*/
-
-
+/**
+ * Invoked from csat-disable.yaml pick last 3 frames of issues and
+ * disable the all csat-survey links in closed issue.
+ * @param {!Object.<string,!Object>} github contains pre defined functions.
+ *  context Information about the workflow run.
+ */
 module.exports = async ({ github, context }) => {
     console.log("Owner of the repo = ", context.payload.repository.owner.login)
-
+   
     for (let i = 1; i <4; i++) { 
       console.log("Running for page :", i)
-   
       const issueDetails = await github.rest.issues.listForRepo({
         owner: context.payload.repository.owner.login,
         repo: context.payload.repository.name,
