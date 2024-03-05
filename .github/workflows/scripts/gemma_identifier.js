@@ -22,8 +22,8 @@ You may obtain a copy of the License at
  * @return {null}
  */
 module.exports = async ({ github, context }) => {
-    // console.log("Github...",github)
-    // console.log("context...",context)
+    console.log("Github...",github)
+    console.log("context...",context)
     const issue_title = context.payload.issue.title 
     const issue_discription =context.payload.issue.body
     const issue_number = context.issue.number ?? context.payload.issue.number;
