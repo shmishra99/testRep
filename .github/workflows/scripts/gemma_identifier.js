@@ -20,15 +20,15 @@ You may obtain a copy of the License at
  * @param {!Object.<string,!Object>} github contains pre defined functions.
  *  context Information about the workflow run.
  */
+
 module.exports = async ({ github, context }) => {
-    console.log("Github...",github)
-    console.log("context...",context)
     const issue_title = context.payload.issue ?  context.payload.issue.title : context.payload.pull_request.title
     const issue_discription = context.payload.issue ? context.payload.issue.body : context.payload.pull_request.body
     const issue_number = context.payload.issue ? context.payload.issue.number : context.payload.pull_request.number
     const labelToAdd = 'Gemma'
     console.log(issue_title,issue_discription,issue_number)
     if(issue_title.toLowerCase().indexOf('gemma') !=-1 || issue_discription.toLowerCase().indexOf('gemma') !=-1 ){
+        console.log(`Gemma keyword is presnet in #${issue_number} issue. Adding 'Gemma label.'`)
         console.log('Adding gemma...')
         github.rest.issues.addLabels({
             owner: context.repo.owner,
