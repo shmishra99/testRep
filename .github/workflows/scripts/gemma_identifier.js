@@ -24,9 +24,9 @@ You may obtain a copy of the License at
 module.exports = async ({ github, context }) => {
     console.log("Github...",github)
     console.log("context...",context)
-    const issue_title = context.payload.issue.title 
-    const issue_discription =context.payload.issue.body
-    const issue_number = context.issue.number ?? context.payload.issue.number;
+    const issue_title = context.payload.issue ?  context.payload.issue.title : context.payload.pull_request.title
+    const issue_discription = context.payload.issue ? context.payload.issue.body : context.payload.pull_request.body
+    const issue_number = context.payload.issue ? context.payload.issue.number : context.payload.pull_request.number
     const labelToAdd = 'Gemma'
     if(issue_title.toLowerCase().indexOf('gemma') !=-1 || issue_title.toLowerCase().indexOf('gemma') !=-1 ){
 
