@@ -26,14 +26,14 @@ module.exports = async ({ github, context }) => {
     const issue_title = github.event.issue.title 
     const issue_discription = github.event.issue.body
     const issue_number = context.issue.number ?? context.payload.issue.number;
-
+    const labelToAdd = 'Gemma'
     if(issue_title.toLowerCase().indexOf('gemma') !=-1 || issue_title.toLowerCase().indexOf('gemma') !=-1 ){
 
         github.rest.issues.addLabels({
             owner: context.repo.owner,
             repo: context.repo.repo,
             issue_number: context.issue.number,
-            labels:[labelsToAdd]
+            labels:[labelToAdd]
         })
 
     }
