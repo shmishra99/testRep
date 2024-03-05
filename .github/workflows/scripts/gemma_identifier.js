@@ -19,7 +19,6 @@ You may obtain a copy of the License at
  * label to the issues and PRs for which have gemma keyword present.
  * @param {!Object.<string,!Object>} github contains pre defined functions.
  *  context Information about the workflow run.
- * @return {null}
  */
 module.exports = async ({ github, context }) => {
     console.log("Github...",github)
