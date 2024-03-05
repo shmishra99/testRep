@@ -22,10 +22,10 @@ You may obtain a copy of the License at
  * @return {null}
  */
 module.exports = async ({ github, context }) => {
-    console.log("Github...",github)
-    console.log("context...",context)
-    const issue_title = github.event.issue.title 
-    const issue_discription = github.event.issue.body
+    // console.log("Github...",github)
+    // console.log("context...",context)
+    const issue_title = context.payload.issue.title 
+    const issue_discription =context.payload.issue.body
     const issue_number = context.issue.number ?? context.payload.issue.number;
     const labelToAdd = 'Gemma'
     if(issue_title.toLowerCase().indexOf('gemma') !=-1 || issue_title.toLowerCase().indexOf('gemma') !=-1 ){
