@@ -33,12 +33,12 @@ module.exports = async ({ github, context }) => {
     
     for(const [keyword, label] of Object.entries(keyword_label)){
      if(issue_title.toLowerCase().indexOf(keyword) !=-1 || issue_discription.toLowerCase().indexOf(keyword) !=-1 ){
-        console.log(`${keyword} is present inside the title or description. Pushing label ${label} to row.`)
+        console.log(`'${keyword}'keyword is present inside the title or description. Pushing label '${label}' to row.`)
         labelsToAdd.push(label)
     }
    }
    if(labelsToAdd.length > 0){
-    console.log(`Gemma keyword is present in #${issue_number} issue. Adding 'Gemma label.'`)
+    console.log(`Adding labels ${labelsToAdd} to the issue  '#${issue_number}'.`)
      github.rest.issues.addLabels({
         owner: context.repo.owner,
         repo: context.repo.repo,
