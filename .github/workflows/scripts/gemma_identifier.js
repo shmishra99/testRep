@@ -37,7 +37,7 @@ module.exports = async ({ github, context }) => {
         labelsToAdd.push(label)
     }
    }
-   if(labelsToAdd.length() > 0){
+   if(labelsToAdd.length > 0){
     console.log(`Gemma keyword is present in #${issue_number} issue. Adding 'Gemma label.'`)
      github.rest.issues.addLabels({
         owner: context.repo.owner,
