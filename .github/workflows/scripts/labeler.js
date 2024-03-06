@@ -38,14 +38,12 @@ module.exports = async ({ github, context }) => {
     }
    }
    if(labelsToAdd.length > 0){
-    console.log(`Adding labels ${labelsToAdd} to the issue  '#${issue_number}'.`)
+    console.log(`Adding labels ${labelsToAdd} to the issue '#${issue_number}'.`)
      github.rest.issues.addLabels({
         owner: context.repo.owner,
         repo: context.repo.repo,
         issue_number: context.issue.number,
         labels: labelsToAdd
      })
-
    }
-
 };
