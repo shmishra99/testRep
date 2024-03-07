@@ -30,7 +30,10 @@ module.exports = async ({ github, context }) => {
     }
     const labelsToAdd = []
     console.log(issue_title,issue_discription,issue_number)
-    
+
+     if(issue_discription == null)
+           issue_discription = ''
+     
     for(const [keyword, label] of Object.entries(keyword_label)){
      if(issue_title.toLowerCase().indexOf(keyword) !=-1 || issue_discription.toLowerCase().indexOf(keyword) !=-1 ){
         console.log(`'${keyword}'keyword is present inside the title or description. Pushing label '${label}' to row.`)
