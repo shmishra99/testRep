@@ -47,8 +47,8 @@ jobs:
 
        
         stale-pr-message: 'This PR is stale because it has been open 30 days with no activity. Remove stale label or comment or this will be closed in 5 days'
-        days-before-stale: 30
-        days-before-close: 5
+        days-before-stale: 0
+        days-before-close: 0
         
         #comment on PR if stale for more then 30 days. 
         close-pr-message: This PR was closed due to lack of activity after being marked stale for past 30 days.
@@ -63,7 +63,7 @@ jobs:
         close-issue-reason: completed
         
         # Number of days of inactivity before a stale issue is closed
-        days-before-issue-close: 1
+        days-before-issue-close: 0
         
         # Number of days of inactivity before an issue Request becomes stale
         days-before-issue-stale: 0
