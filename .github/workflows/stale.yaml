@@ -35,7 +35,7 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/stale@v7
+    - uses: actions/stale@latest
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         #Comma separated list of labels that can be assigned to issues to exclude them from being marked as stale 
